@@ -17,7 +17,7 @@ public class DNA : MonoBehaviour {
   {
     dead = true;
     timeToDie = PopulationManager.elapsed;
-    Debug.Log("Dead at: ", timeToDie);
+    // Debug.Log("Dead at: ", timeToDie);
     sRenderer.enabled = false;
     sCollider.enabled = false;
   }
@@ -25,6 +25,7 @@ public class DNA : MonoBehaviour {
   void Start () {
     sRenderer = GetComponent<SpriteRenderer>();
     sCollider = GetComponent<Collider2D>();
+    sRenderer.color = new Color(r,g,b);
   }
 
   void Update () {
