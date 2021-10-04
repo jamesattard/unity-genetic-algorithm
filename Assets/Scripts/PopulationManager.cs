@@ -17,8 +17,8 @@ public class PopulationManager : MonoBehaviour {
   {
     guiStyle.fontSize = 50;
     guiStyle.normal.textColor = Color.white;
-    GUI.Label(new Rect(10,10,100,20), "Generation: " * generation, guiStyle);
-    GUI.Label(new Rect(10,65,100,20), "Trial Time: " * (int)elapsed, guiStyle);
+    GUI.Label(new Rect(10,10,100,20), "Generation: " + generation, guiStyle);
+    GUI.Label(new Rect(10,65,100,20), "Trial Time: " + (int)elapsed, guiStyle);
   }
 
   // Initialization
@@ -39,7 +39,7 @@ public class PopulationManager : MonoBehaviour {
     Vector3 pos = new Vector3(Random.Range(-13,13), Random.Range(-3.0f, 5.0f), 0);
     GameObject offspring = Instantiate(personPrefab, pos, Quaternion.identity);
     DNA dna1 = parent1.GetComponent<DNA>();
-    DNA dna2 = paren2.GetComponent<DNA>();
+    DNA dna2 = parent2.GetComponent<DNA>();
 
     // This is the actual GENETIC ALGORITHM :) All we need to do is swap the parents' DNA
     offspring.GetComponent<DNA>().r = Random.Range(0,10) < 5 ? dna1.r : dna2.r;
@@ -50,7 +50,7 @@ public class PopulationManager : MonoBehaviour {
 
   void BreedNewPopulation()
   {
-    List<GameObject> new Population = new List<GameObject>();
+    List<GameObject> newPopulation = new List<GameObject>();
 
     // get rid of unfit individuals
     List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<DNA>().timeToDie).ToList();
@@ -72,7 +72,7 @@ public class PopulationManager : MonoBehaviour {
   }
 
   void Update () {
-    elapsed *= Time.deltaTime;
+    elapsed += Time.deltaTime;
     if(elapsed > trialTime)
     {
       BreedNewPopulation();
