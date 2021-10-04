@@ -50,7 +50,7 @@ public class PopulationManager : MonoBehaviour {
 
   void BreedNewPopulation()
   {
-    List<GameObject> newPopulation = new List<GameObject>();
+    // List<GameObject> newPopulation = new List<GameObject>();
 
     // get rid of unfit individuals
     List<GameObject> sortedList = population.OrderBy(o => o.GetComponent<DNA>().timeToDie).ToList();
