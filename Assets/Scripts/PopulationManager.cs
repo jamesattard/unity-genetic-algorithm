@@ -41,7 +41,7 @@ public class PopulationManager : MonoBehaviour {
     DNA dna1 = parent1.GetComponent<DNA>();
     DNA dna2 = paren2.GetComponent<DNA>();
 
-    // swap parent dna
+    // This is the actual GENETIC ALGORITHM :) All we need to do is swap the parents' DNA
     offspring.GetComponent<DNA>().r = Random.Range(0,10) < 5 ? dna1.r : dna2.r;
     offspring.GetComponent<DNA>().g = Random.Range(0,10) < 5 ? dna1.r : dna2.g;
     offspring.GetComponent<DNA>().b = Random.Range(0,10) < 5 ? dna1.r : dna2.b;
